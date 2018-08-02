@@ -7,7 +7,7 @@
  *
  * @return number
  */
-function getFretSpacing(length, number) {
+export function getFretSpacing(length, number) {
 	const position = number / 12;
 
 	return length - (length / Math.pow(2, position));
@@ -19,7 +19,7 @@ function getFretSpacing(length, number) {
  * @param number length
  * @param number fretCount
  */
-function getAllFretSpaces(length, fretCount) {
+export function getAllFretSpaces(length, fretCount) {
 	let frets = [];
 
 	while (frets.length < fretCount) {
@@ -34,7 +34,7 @@ function getAllFretSpaces(length, fretCount) {
  *
  * @return number
  */
-function getWidth() {
+export function getWidth() {
 	const { clientWidth, scrollWidth } = document.body;
 
 	return Math.min(clientWidth, scrollWidth, window.innerWidth);

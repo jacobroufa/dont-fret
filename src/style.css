@@ -1,0 +1,26 @@
+header {
+	text-align: center;
+}
+
+main .controls > div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.key {
+	background-color: #DDD;
+	border-color: #333;
+	color: #333;
+	flex: 0 1 auto;
+}
+
+.key.activeKey {
+	background-color: orange;
+}
+
+.button {
+	border: 1px solid;
+	border-radius: 10px;
+	padding: 5px 10px;
+}
