@@ -2,30 +2,35 @@ header {
 	text-align: center;
 }
 
+main {
+	padding: 1em 2em;
+}
+
+main .controls {
+	padding: 0.5em 0;
+}
+
 main .controls > div {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
-}
-
-.key {
-	background-color: #DDD;
-	border-color: #333;
-	color: #333;
-	flex: 0 1 auto;
-}
-
-.key:hover {
-	background-color: pink;
-}
-
-.key.activeKey {
-	background-color: salmon;
+	padding: 0.5em 0;
 }
 
 .button {
-	border: 1px solid;
+	background-color: #DDD;
+	border: 1px solid #333;
 	border-radius: 10px;
+	color: #333;
 	cursor: pointer;
+	flex: 0 1 auto;
 	padding: 5px 10px;
+}
+
+.button:hover {
+	background-color: pink;
+}
+
+.button.active {
+	background-color: salmon;
 }
