@@ -6,24 +6,33 @@ const keysEl = byId("keys");
 const scalesEl = byId("scales");
 const fretboardEl = byId("fretboard");
 
-const allKeys = createKeys();
 let activeKey = "C";
 
-allKeys.forEach((key) => keysEl.appendChild(key));
+const allKeys = createKeys();
+
+allKeys.forEach(({ el }) => keysEl.appendChild(el));
 
 function createKeys() {
 	return keys.map((key) => {
-		const active = 'activeKey';
-		// const active = activeKey === key ? "activeKey" : "";
+		const active = activeKey === key ? "activeKey" : "";
 		const className = `key button ${ active }`;
-
-		return c("div", {
+		const el = c("div", {
 			className,
 			id: `key_${ key }`,
 			textContent: key
 		}, () => {
-			activeKey = key;
-			console.log(`${ key } has been clicked!`);
+			selectKey(key, el);
 		});
+
+		return { el, key };
 	});
+}
+
+function selectKey(key, keyEl) {
+	activeKey = key;
+
+	allKeys.filter(({ key }) => key !== activeKey)
+		.forEach(({ el }) => el.classList.remove("activeKey"));
+
+	keyEl.classList.add("activeKey");
 }

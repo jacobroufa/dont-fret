@@ -15,12 +15,17 @@ main .controls > div {
 	flex: 0 1 auto;
 }
 
+.key:hover {
+	background-color: pink;
+}
+
 .key.activeKey {
-	background-color: orange;
+	background-color: salmon;
 }
 
 .button {
 	border: 1px solid;
 	border-radius: 10px;
+	cursor: pointer;
 	padding: 5px 10px;
 }
