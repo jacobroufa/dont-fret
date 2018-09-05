@@ -39,3 +39,16 @@ export function getWidth() {
 
 	return Math.min(clientWidth, scrollWidth, window.innerWidth);
 }
+
+/**
+ * Properly-case a word
+ *
+ * @param string word
+ * @return string
+ */
+export function toUpperCase(word) {
+	const first = word.slice(0, 1).toUpperCase();
+	const rest = word.slice(1);
+
+	return first + rest;
+}

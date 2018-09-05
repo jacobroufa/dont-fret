@@ -2,7 +2,7 @@ export const keys = [ "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab
 
 export const modes = [ "Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian" ];
 
-export const presets = {
+export const instruments = {
 	bass: {
 		strings: 4,
 		frets: 20,

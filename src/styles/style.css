@@ -1,0 +1,96 @@
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
+header {
+	text-align: center;
+}
+
+header h1 {
+	padding: 0.5em 0;
+}
+
+main {
+	padding: 1em 2em;
+}
+
+main .controls {
+	padding: 0.5em 0;
+}
+
+main .controls > div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding: 0.5em 0;
+}
+
+.button {
+	background-color: #DDD;
+	border: 1px solid #333;
+	border-radius: 10px;
+	color: #333;
+	cursor: pointer;
+	flex: 0 1 auto;
+	padding: 5px 10px;
+}
+
+.button:hover {
+	background-color: pink;
+}
+
+.button.active {
+	background-color: salmon;
+}
+
+.modal {
+	background-color: rgba(200, 200, 200, 0.8);
+	display: none;
+	height: 100vh;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100vw;
+}
+
+.modal.visible {
+	display: block;
+}
+
+.modal-inner {
+	background: #FFF;
+	border-radius: 2px;
+	margin: 10vh auto 0;
+	max-height: 80vh;
+	max-width: 60vh;
+	padding: 1em;
+	position: relative;
+}
+
+.modal-close {
+	background-color: indianred;
+	border: #333;
+	border-radius: 1em;
+	color: #FFF;
+	height: 1em;
+	line-height: 1em;
+	position: absolute;
+	right: 0.5em;
+	text-align: center;
+	top: 0.5em;
+	width: 1em;
+}
