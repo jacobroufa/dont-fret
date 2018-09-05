@@ -20,3 +20,6 @@ export const instruments = {
 		octave: true
 	}
 };
+
+export const FRET_WIDTH = 40;
+export const STRING_WIDTH = 2;

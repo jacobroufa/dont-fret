@@ -73,4 +73,6 @@ function selectEl(item, itemEl, key) {
 		.forEach(({ el }) => el.classList.remove("active"));
 
 	itemEl.classList.add("active");
+
+	fretboard.setActive(active);
 }

@@ -36,8 +36,10 @@ export function getAllFretSpaces(length, fretCount) {
  */
 export function getWidth() {
 	const { clientWidth, scrollWidth } = document.body;
+	const fontSize = parseFloat(getComputedStyle(document.body).fontSize);
+	const padding = 4 * fontSize // 2em L/R padding on body > main
 
-	return Math.min(clientWidth, scrollWidth, window.innerWidth);
+	return Math.min(clientWidth, scrollWidth, window.innerWidth) - padding;
 }
 
 /**
