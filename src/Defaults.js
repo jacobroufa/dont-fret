@@ -1,6 +1,14 @@
 export const keys = [ "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B" ];
 
-export const modes = [ "Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian" ];
+export const modes = {
+	"Ionian": [ 2, 2, 1, 2, 2, 2, 1 ],
+	"Dorian": [ 2, 1, 2, 2, 2, 1, 2 ],
+	"Phrygian": [ 1, 2, 2, 2, 1, 2, 2 ],
+	"Lydian": [ 2, 2, 2, 1, 2, 2, 1 ],
+	"Mixolydian": [ 2, 2, 1, 2, 2, 1, 2 ],
+	"Aeolian": [ 2, 1, 2, 2, 1, 2, 2 ],
+	"Locrian": [ 1, 2, 2, 1, 2, 2, 2 ]
+};
 
 export const instruments = {
 	bass: {
@@ -28,6 +36,9 @@ export const LEFT_MARGIN = 20;
 
 export const FRET_SIZE = 3;
 export const NUT_SIZE = 6;
+export const NOTE_SIZE = 24;
+
+export const EXPERIMENTAL_FRETS = false;
 
 // taken from https://www.liutaiomottola.com/formulae/fret.htm
 export const FRET_CONSTANT = [

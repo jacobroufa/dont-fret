@@ -24,7 +24,7 @@ document.body.appendChild(addInstrumentsDialog.el);
 
 controls.instrument = createControls(Object.keys(instruments), "instrument");
 controls.key = createControls(keys, "key");
-controls.mode = createControls(modes, "mode");
+controls.mode = createControls(Object.keys(modes), "mode");
 
 controls.instrument.forEach(({ el }) => instrumentsEl.appendChild(el));
 controls.key.forEach(({ el }) => keysEl.appendChild(el));
