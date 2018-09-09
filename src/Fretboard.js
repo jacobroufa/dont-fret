@@ -78,18 +78,18 @@ export default class Fretboard {
 		// IDK if I need to put four of these in here, but maybe theres an instrument with a ton of frets
 		const notes = [ ...keys, ...keys, ...keys, ...keys ].slice(stringIndex, throughIndex);
 
-		console.log({ string, notes });
-
 		notes.forEach((note, index) => {
-			const fret = FRET_CONSTANT[index];
-			const prevFret = index === 0 ? leftMargin : FRET_CONSTANT[index - 1];
-			const distance = fret * scaleLength;
-			const prevDistance = prevFret * scaleLength;
-			const distDiff = (distance - prevDistance) / 2;
-			const halfNoteSize = NOTE_SIZE / 2;
-			const notePlacement = distance - distDiff - halfNoteSize;
+			if (opts.scale.indexOf(note) === -1) {
+				return false;
+			}
 
-			console.log({ note, distance, prevDistance, notePlacement })
+			const fret = FRET_CONSTANT[index];
+			const prevFret = FRET_CONSTANT[index - 1];
+			const distance = fret * scaleLength;
+			const prevDistance = index === 0 ? leftMargin : prevFret * scaleLength;
+			const distDiff = (index === 0 ? leftMargin : (distance - prevDistance)) / 2;
+			const halfNoteSize = NOTE_SIZE / 2;
+			const notePlacement = prevDistance - distDiff - halfNoteSize;
 
 			this.fretboard
 				.circle(NOTE_SIZE)
@@ -122,7 +122,28 @@ export default class Fretboard {
 		const half = (FRET_WIDTH - STRING_WIDTH) / 2;
 		const stringHalf = half + STRING_WIDTH;
 		const instrument = this.getInstrument();
-		let rects = 1;
+		const mode = [ 0, ...modes[this.mode] ];
+		const modeIntervals = mode.map((interval, index, self) => {
+			if (index === 0) {
+				return 0;
+			}
+
+			const nextInterval = self
+				.slice(0, index)
+				.reduce((p, i) => i + p, 0);
+
+			return interval + nextInterval;
+		});
+		const keyIndex = keys.indexOf(this.key);
+		const notesForScale = [ ...keys, ...keys, ...keys ].slice(keyIndex, keys.length + keyIndex + 1);
+		const scale = notesForScale.filter((note, index, self) => {
+				if (index === modeIntervals[0]) {
+					modeIntervals.shift();
+					return true;
+				}
+
+				return false;
+			});
 
 		instrument.notes.forEach((note, index) => {
 			const rect = index + 1;
@@ -136,7 +157,7 @@ export default class Fretboard {
 			if (type === "renderString") {
 				opts = { heightDiff,  note };
 			} else if (type === "renderNotes") {
-				opts = { heightDiff, note };
+				opts = { heightDiff, note, scale };
 			}
 
 			this[type](opts);
