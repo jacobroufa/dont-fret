@@ -74,12 +74,13 @@ export default class Fretboard {
 		const leftMargin = (LEFT_MARGIN * 2) + NUT_SIZE;
 		const fretBoard = this.width - leftMargin;
 		const scaleLength = (fretBoard / 3) * 4;
-
 		// IDK if I need to put four of these in here, but maybe theres an instrument with a ton of frets
 		const notes = [ ...keys, ...keys, ...keys, ...keys ].slice(stringIndex, throughIndex);
+		const noteColors = [ "red", "yellow", "lightblue", "gray", "lightgreen", "darkblue", "purple" ]
 
 		notes.forEach((note, index) => {
-			if (opts.scale.indexOf(note) === -1) {
+			const noteIndex = opts.scale.indexOf(note);
+			if (noteIndex === -1) {
 				return false;
 			}
 
@@ -93,13 +94,14 @@ export default class Fretboard {
 
 			this.fretboard
 				.circle(NOTE_SIZE)
+				.attr({ fill: noteColors[noteIndex] })
 				.move(notePlacement, opts.heightDiff - halfNoteSize);
 
 			const text = this.fretboard
 				.text(note);
 			const halfFontSize = (text.font("size") / 2);
 
-			text.move(notePlacement, opts.heightDiff - halfFontSize);
+			text.move(notePlacement + halfFontSize, opts.heightDiff - halfFontSize);
 		});
 	}
 
