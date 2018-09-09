@@ -87,9 +87,9 @@ export default class Fretboard {
 			const prevFret = FRET_CONSTANT[index - 1];
 			const distance = fret * scaleLength;
 			const prevDistance = index === 0 ? leftMargin : prevFret * scaleLength;
-			const distDiff = (index === 0 ? leftMargin : (distance - prevDistance)) / 2;
+			const distDiff = index === 0 ? leftMargin / 2 : (distance - prevDistance);
 			const halfNoteSize = NOTE_SIZE / 2;
-			const notePlacement = prevDistance - distDiff - halfNoteSize;
+			const notePlacement = (index === 0 ? prevDistance : distance) - distDiff;
 
 			this.fretboard
 				.circle(NOTE_SIZE)
